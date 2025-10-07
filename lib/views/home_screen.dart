@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_media_app/views/chat_view.dart';
+import 'package:social_media_app/views/widgets/post_card.dart';
+import 'package:social_media_app/views/widgets/stories_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -157,94 +159,5 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Text('Dashboard Page', style: TextStyle(fontSize: 24)));
-  }
-}
-
-class StoriesBar extends StatelessWidget {
-  const StoriesBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 100,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.all(8),
-        itemCount: 8,
-        separatorBuilder: (_, __) => const SizedBox(width: 8),
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.blueAccent,
-                child: Text('U$index',
-                    style: const TextStyle(color: Colors.white)),
-              ),
-              const SizedBox(height: 4),
-              Text('User$index', style: const TextStyle(fontSize: 12)),
-            ],
-          );
-        },
-      ),
-    );
-  }
-}
-
-class PostCard extends StatelessWidget {
-  final int index;
-  const PostCard({super.key, required this.index});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ListTile(
-            leading: CircleAvatar(
-              backgroundColor: Colors.blueAccent,
-              child:
-                  Text('U$index', style: const TextStyle(color: Colors.white)),
-            ),
-            title: Text('User$index'),
-            subtitle: const Text('2 hours ago'),
-            trailing: IconButton(
-              icon: const Icon(Icons.more_vert),
-              onPressed: () {},
-            ),
-          ),
-          Container(
-            height: 180,
-            color: Colors.grey[300],
-            child: const Center(
-                child: Icon(Icons.image, size: 80, color: Colors.grey)),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Text('This is post #$index',
-                style: const TextStyle(fontSize: 16)),
-          ),
-          OverflowBar(
-            alignment: MainAxisAlignment.start,
-            children: [
-              IconButton(
-                icon: const Icon(Icons.favorite_border),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: const Icon(Icons.comment),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: const Icon(Icons.share),
-                onPressed: () {},
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
   }
 }
